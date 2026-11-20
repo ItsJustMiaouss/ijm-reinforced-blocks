@@ -1,7 +1,5 @@
 package com.itsjustmiaouss.ijmreinforced.block;
 
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
 import com.itsjustmiaouss.ijmreinforced.block.reinforced.ReinforcedBlock;
 import com.itsjustmiaouss.ijmreinforced.block.reinforced.ReinforcedStone;
 import com.itsjustmiaouss.ijmreinforced.reference.ReinforcedBlockItemIds;
@@ -15,13 +13,16 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Optional;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public class ReinforcedBlocks {
 
-    private static final BiMap<BlockItemId, AbstractReinforcedBlock> reinforcedBlocks = HashBiMap.create();
+    private static final LinkedHashMap<Block, AbstractReinforcedBlock> reinforcedBlocks = new LinkedHashMap<>();
 
     public static final Block REINFORCED_STONE = registerReinforcedBlock(ReinforcedBlockItemIds.REINFORCED_STONE, (_, properties) -> new ReinforcedStone(properties), Blocks.STONE);
     public static final Block REINFORCED_DEEPSLATE_BRICKS = registerReinforcedBlock(ReinforcedBlockItemIds.REINFORCED_DEEPSLATE_BRICKS, ReinforcedBlock::new, Blocks.DEEPSLATE_BRICKS);
@@ -31,15 +32,12 @@ public class ReinforcedBlocks {
      *
      * @return An instance of {@link AbstractReinforcedBlock}.
      */
-    public static Set<AbstractReinforcedBlock> getReinforcedBlocks() {
-        return Collections.unmodifiableSet(reinforcedBlocks.values());
+    public static Collection<AbstractReinforcedBlock> getReinforcedBlocks() {
+        return Collections.unmodifiableCollection(reinforcedBlocks.values());
     }
 
-    /**
-     * Get the ids of the registered reinforced blocks, in registration order.
-     */
-    public static Set<BlockItemId> getReinforcedBlockIds() {
-        return Collections.unmodifiableSet(reinforcedBlocks.keySet());
+    public static Optional<AbstractReinforcedBlock> getReinforcedFromOriginal(Block original) {
+        return Optional.ofNullable(reinforcedBlocks.get(original));
     }
 
     /**
@@ -53,7 +51,7 @@ public class ReinforcedBlocks {
 
         return register(id, props -> {
             AbstractReinforcedBlock block = blockFactory.apply(originalBlock, props);
-            reinforcedBlocks.put(id, block);
+            reinforcedBlocks.putIfAbsent(originalBlock, block);
             return block;
         }, properties);
     }

@@ -5,7 +5,7 @@ import com.itsjustmiaouss.ijmreinforced.reference.ReinforcedTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.references.BlockItemId;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 import org.jspecify.annotations.NonNull;
@@ -29,7 +29,9 @@ public class ReinforcedTagsProvider extends FabricTagsProvider.BlockTagsProvider
 
     @Override
     protected void addTags(HolderLookup.@NonNull Provider registries) {
-        builder(ReinforcedTags.REINFORCED_BLOCKS).add(ReinforcedBlocks.getReinforcedBlockIds().toArray(BlockItemId[]::new));
+        builder(ReinforcedTags.REINFORCED_BLOCKS).addAll(ReinforcedBlocks.getReinforcedBlocks()
+                .stream().map(block -> BuiltInRegistries.BLOCK.getResourceKey(block).orElseThrow()
+        ));
 
         SHARED_TAGS.forEach(tag -> builder(tag).addTag(ReinforcedTags.REINFORCED_BLOCKS));
     }

@@ -16,7 +16,6 @@ import net.minecraft.world.level.block.Block;
 import org.jspecify.annotations.NonNull;
 
 import java.util.Optional;
-import java.util.Set;
 
 public class ReinforcerItem extends Item {
 
@@ -36,11 +35,7 @@ public class ReinforcerItem extends Item {
 
         if (player == null) return InteractionResult.PASS;
 
-        Set<AbstractReinforcedBlock> reinforcedBlocks = ReinforcedBlocks.getReinforcedBlocks();
-
-        Optional<AbstractReinforcedBlock> reinforcedBlock = reinforcedBlocks.stream()
-                .filter(abstractReinforcedBlock -> abstractReinforcedBlock.getOriginalBlock()
-                        .equals(block)).findFirst();
+        Optional<AbstractReinforcedBlock> reinforcedBlock = ReinforcedBlocks.getReinforcedFromOriginal(block);
 
         if (reinforcedBlock.isEmpty()) return InteractionResult.PASS;
 
@@ -51,6 +46,6 @@ public class ReinforcerItem extends Item {
             level.playSound(null, clickedPos, SoundEvents.NETHER_BRICKS_PLACE, SoundSource.BLOCKS, 1f, 1f);
         }
 
-        return InteractionResult.SUCCESS;
+        return InteractionResult.PASS;
     }
 }
