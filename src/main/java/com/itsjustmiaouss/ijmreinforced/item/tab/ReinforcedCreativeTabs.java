@@ -4,6 +4,7 @@ import com.itsjustmiaouss.ijmreinforced.IJMReinforcedBlocks;
 import com.itsjustmiaouss.ijmreinforced.block.ReinforcedBlocks;
 import com.itsjustmiaouss.ijmreinforced.item.ReinforcedItems;
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
+import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
@@ -24,5 +25,9 @@ public class ReinforcedCreativeTabs {
                 output.accept(ReinforcedItems.REINFORCER_ITEM);
             })
             .build();
+
+    public static void initialize() {
+        Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, ReinforcedCreativeTabs.REINFORCED_TAB_KEY, ReinforcedCreativeTabs.REINFORCED_TAB);
+    }
 
 }

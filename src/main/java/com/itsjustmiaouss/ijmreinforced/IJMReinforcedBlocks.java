@@ -21,8 +21,7 @@ public class IJMReinforcedBlocks implements ModInitializer {
 		ReinforcedItems.initialize();
 		ReinforcedBlocks.initialize();
 		ReinforcedBlockEntities.initialize();
-
-		Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, ReinforcedCreativeTabs.REINFORCED_TAB_KEY, ReinforcedCreativeTabs.REINFORCED_TAB);
+		ReinforcedCreativeTabs.initialize();
 	}
 
 	public static Identifier id(String path) {
