@@ -1,6 +1,5 @@
 package com.itsjustmiaouss.ijmreinforced.block;
 
-import com.itsjustmiaouss.ijmreinforced.IJMReinforcedBlocks;
 import com.itsjustmiaouss.ijmreinforced.block.entity.ReinforcedBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;
@@ -40,7 +39,6 @@ public abstract class AbstractReinforcedBlock extends BaseEntityBlock {
 
         if (level.isClientSide()) return;
         if (!(placer instanceof Player player)) return;
-        IJMReinforcedBlocks.LOGGER.info("placed by {}", player.getName());
 
         if (level.getBlockEntity(pos) instanceof ReinforcedBlockEntity blockEntity) {
             blockEntity.setOwner(player);
