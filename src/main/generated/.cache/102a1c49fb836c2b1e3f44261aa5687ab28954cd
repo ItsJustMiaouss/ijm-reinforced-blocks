@@ -1,5 +1,8 @@
 // 26.3	-999999999-01-01T00:00:00	IJM's Reinforced Blocks/Tags for minecraft:block
 427fc2f2c3908096f4bf6ecd6a905d3ba75b8523 data/ijmreinforced/tags/block/reinforced_blocks.json
+e2fc87b443938dd51e90118d778454d3c65769f3 data/minecraft/tags/block/blocks_lava_fire_spread.json
+e2fc87b443938dd51e90118d778454d3c65769f3 data/minecraft/tags/block/blocks_wind_charge_explosions.json
+e2fc87b443938dd51e90118d778454d3c65769f3 data/minecraft/tags/block/causes_suffocation.json
 e2fc87b443938dd51e90118d778454d3c65769f3 data/minecraft/tags/block/dragon_immune.json
 e2fc87b443938dd51e90118d778454d3c65769f3 data/minecraft/tags/block/mineable/pickaxe.json
 e2fc87b443938dd51e90118d778454d3c65769f3 data/minecraft/tags/block/needs_diamond_tool.json
