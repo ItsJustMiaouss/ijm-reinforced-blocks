@@ -1,8 +1,8 @@
-package item.tab;
+package com.itsjustmiaouss.ijmreinforced.item.tab;
 
 import com.itsjustmiaouss.ijmreinforced.IJMReinforcedBlocks;
 import com.itsjustmiaouss.ijmreinforced.block.ReinforcedBlocks;
-import item.ReinforcedItems;
+import com.itsjustmiaouss.ijmreinforced.item.ReinforcedItems;
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;

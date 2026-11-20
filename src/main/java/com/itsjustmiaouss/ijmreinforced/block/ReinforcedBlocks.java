@@ -21,13 +21,11 @@ import java.util.function.Function;
 
 public class ReinforcedBlocks {
 
-//    private static final Set<AbstractReinforcedBlock> reinforcedBlocks = new HashSet<>();
-//    private static final Set<BlockItemId> reinforcedBlockIds = new LinkedHashSet<>();
-
     private static final BiMap<BlockItemId, AbstractReinforcedBlock> reinforcedBlocks = HashBiMap.create();
 
     public static final Block REINFORCED_STONE = registerReinforcedBlock(ReinforcedBlockItemIds.REINFORCED_STONE, (_, properties) -> new ReinforcedStone(properties), Blocks.STONE);
     public static final Block REINFORCED_DEEPSLATE_BRICKS = registerReinforcedBlock(ReinforcedBlockItemIds.REINFORCED_DEEPSLATE_BRICKS, ReinforcedBlock::new, Blocks.DEEPSLATE_BRICKS);
+
     /**
      * Get a Set of the registered reinforced blocks.
      *

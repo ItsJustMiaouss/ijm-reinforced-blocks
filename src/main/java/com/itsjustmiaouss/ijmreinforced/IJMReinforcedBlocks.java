@@ -3,8 +3,8 @@ package com.itsjustmiaouss.ijmreinforced;
 import com.itsjustmiaouss.ijmreinforced.block.ReinforcedBlocks;
 import com.itsjustmiaouss.ijmreinforced.block.entity.ReinforcedBlockEntities;
 import com.itsjustmiaouss.ijmreinforced.event.AttackBlockEvent;
-import item.tab.ReinforcedCreativeTabs;
-import item.ReinforcedItems;
+import com.itsjustmiaouss.ijmreinforced.item.tab.ReinforcedCreativeTabs;
+import com.itsjustmiaouss.ijmreinforced.item.ReinforcedItems;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.event.player.AttackBlockCallback;

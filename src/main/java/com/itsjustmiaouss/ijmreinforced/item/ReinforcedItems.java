@@ -1,4 +1,4 @@
-package item;
+package com.itsjustmiaouss.ijmreinforced.item;
 
 import com.itsjustmiaouss.ijmreinforced.reference.ReinforcedItemIds;
 import net.minecraft.core.Registry;
