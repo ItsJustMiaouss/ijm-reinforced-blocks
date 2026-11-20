@@ -1,0 +1,53 @@
+plugins {
+	id 'net.fabricmc.fabric-loom' version "${loom_version}"
+	id 'maven-publish'
+}
+
+repositories {
+
+}
+
+fabricApi {
+	configureDataGeneration {
+		client = true
+		modId = "ijmreinforced"
+	}
+}
+
+dependencies {
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+}
+
+processResources {
+	def properties = [
+			"version": project.version,
+			"minecraft_min": minecraft_min,
+			"fabric_api_min": fabric_api_min
+	]
+
+	inputs.properties(properties)
+
+	filesMatching("fabric.mod.json") {
+		expand(properties)
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = 25
+}
+
+java {
+	sourceCompatibility = JavaVersion.VERSION_25
+	targetCompatibility = JavaVersion.VERSION_25
+}
+
+jar {
+	def projectName = project.name
+	inputs.property "projectName", projectName
+
+	from("LICENSE") {
+		rename { "${it}_$projectName"}
+	}
+}
