@@ -5,8 +5,6 @@ import com.itsjustmiaouss.ijmreinforced.block.entity.ReinforcedBlockEntities;
 import com.itsjustmiaouss.ijmreinforced.item.ReinforcedItems;
 import com.itsjustmiaouss.ijmreinforced.item.tab.ReinforcedCreativeTabs;
 import net.fabricmc.api.ModInitializer;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
