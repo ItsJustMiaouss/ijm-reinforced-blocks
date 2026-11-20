@@ -38,6 +38,10 @@ public class ReinforcedBlockEntity extends BlockEntity {
         return this.ownerUuid;
     }
 
+    public boolean isOwner(Player player) {
+        return  this.ownerUuid != null && this.ownerUuid.equals(player.getUUID());
+    }
+
     public @Nullable String getOwnerName() {
         return this.ownerName;
     }

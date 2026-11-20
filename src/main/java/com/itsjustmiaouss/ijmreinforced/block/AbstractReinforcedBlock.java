@@ -50,7 +50,7 @@ public abstract class AbstractReinforcedBlock extends BaseEntityBlock {
     protected float getDestroyProgress(@NonNull BlockState state, @NonNull Player player, BlockGetter level, @NonNull BlockPos pos) {
         BlockEntity blockEntity = level.getBlockEntity(pos);
         if (blockEntity instanceof ReinforcedBlockEntity reinforcedBlockEntity) {
-            if (reinforcedBlockEntity.getOwnerUuid() == null || !reinforcedBlockEntity.getOwnerUuid().equals(player.getUUID())) {
+            if (!reinforcedBlockEntity.isOwner(player)) {
                 return 0f;
             }
         }
