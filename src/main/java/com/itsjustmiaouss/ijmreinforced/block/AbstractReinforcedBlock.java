@@ -5,6 +5,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
@@ -45,4 +46,15 @@ public abstract class AbstractReinforcedBlock extends BaseEntityBlock {
         }
     }
 
+    @Override
+    protected float getDestroyProgress(@NonNull BlockState state, @NonNull Player player, BlockGetter level, @NonNull BlockPos pos) {
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        if (blockEntity instanceof ReinforcedBlockEntity reinforcedBlockEntity) {
+            if (reinforcedBlockEntity.getOwnerUuid() == null || !reinforcedBlockEntity.getOwnerUuid().equals(player.getUUID())) {
+                return 0f;
+            }
+        }
+
+        return super.getDestroyProgress(state, player, level, pos);
+    }
 }
