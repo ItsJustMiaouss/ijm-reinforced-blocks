@@ -41,7 +41,7 @@ public class ReinforcedBlocks {
     public static final Block REINFORCED_END_STONE_BRICKS = registerReinforcedBlock(ReinforcedBlockItemIds.REINFORCED_END_STONE_BRICKS, ReinforcedBlock::new, Blocks.END_STONE_BRICKS);
 
     /**
-     * Get a Set of the registered reinforced blocks.
+     * Get a Collection of the registered reinforced blocks.
      *
      * @return An instance of {@link AbstractReinforcedBlock}.
      */
@@ -64,7 +64,10 @@ public class ReinforcedBlocks {
 
         return register(id, props -> {
             AbstractReinforcedBlock block = blockFactory.apply(originalBlock, props);
-            reinforcedBlocks.putIfAbsent(originalBlock, block);
+
+            var result = reinforcedBlocks.putIfAbsent(originalBlock, block);
+            if (result != null) throw new IllegalStateException("Can't add duplicated reinforced block! This value already exists : " + result);
+
             return block;
         }, properties);
     }
