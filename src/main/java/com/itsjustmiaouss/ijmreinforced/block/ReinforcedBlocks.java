@@ -25,7 +25,20 @@ public class ReinforcedBlocks {
     private static final LinkedHashMap<Block, AbstractReinforcedBlock> reinforcedBlocks = new LinkedHashMap<>();
 
     public static final Block REINFORCED_STONE = registerReinforcedBlock(ReinforcedBlockItemIds.REINFORCED_STONE, (_, properties) -> new ReinforcedStone(properties), Blocks.STONE);
+    public static final Block REINFORCED_STONE_BRICKS = registerReinforcedBlock(ReinforcedBlockItemIds.REINFORCED_STONE_BRICKS, ReinforcedBlock::new, Blocks.STONE_BRICKS);
+
+    public static final Block REINFORCED_POLISHED_GRANITE = registerReinforcedBlock(ReinforcedBlockItemIds.REINFORCED_POLISHED_GRANITE, ReinforcedBlock::new, Blocks.POLISHED_GRANITE);
+    public static final Block REINFORCED_POLISHED_DIORITE = registerReinforcedBlock(ReinforcedBlockItemIds.REINFORCED_POLISHED_DIORITE, ReinforcedBlock::new, Blocks.POLISHED_DIORITE);
+    public static final Block REINFORCED_POLISHED_ANDESITE = registerReinforcedBlock(ReinforcedBlockItemIds.REINFORCED_POLISHED_ANDESITE, ReinforcedBlock::new, Blocks.POLISHED_ANDESITE);
+
     public static final Block REINFORCED_DEEPSLATE_BRICKS = registerReinforcedBlock(ReinforcedBlockItemIds.REINFORCED_DEEPSLATE_BRICKS, ReinforcedBlock::new, Blocks.DEEPSLATE_BRICKS);
+    public static final Block REINFORCED_POLISHED_DEEPSLATE = registerReinforcedBlock(ReinforcedBlockItemIds.REINFORCED_POLISHED_DEEPSLATE, ReinforcedBlock::new, Blocks.POLISHED_DEEPSLATE);
+    public static final Block REINFORCED_CHISELED_DEEPSLATE = registerReinforcedBlock(ReinforcedBlockItemIds.REINFORCED_CHISELED_DEEPSLATE, ReinforcedBlock::new, Blocks.CHISELED_DEEPSLATE);
+    public static final Block REINFORCED_DEEPSLATE_TILES = registerReinforcedBlock(ReinforcedBlockItemIds.REINFORCED_DEEPSLATE_TILES, ReinforcedBlock::new, Blocks.DEEPSLATE_TILES);
+
+    public static final Block REINFORCED_BRICKS = registerReinforcedBlock(ReinforcedBlockItemIds.REINFORCED_BRICKS, ReinforcedBlock::new, Blocks.BRICKS);
+    public static final Block REINFORCED_PURPUR_BLOCK = registerReinforcedBlock(ReinforcedBlockItemIds.REINFORCED_PURPUR_BLOCK, ReinforcedBlock::new, Blocks.PURPUR_BLOCK);
+    public static final Block REINFORCED_END_STONE_BRICKS = registerReinforcedBlock(ReinforcedBlockItemIds.REINFORCED_END_STONE_BRICKS, ReinforcedBlock::new, Blocks.END_STONE_BRICKS);
 
     /**
      * Get a Set of the registered reinforced blocks.
@@ -46,7 +59,7 @@ public class ReinforcedBlocks {
     private static Block registerReinforcedBlock(BlockItemId id, BiFunction<Block, BlockBehaviour.Properties, AbstractReinforcedBlock> blockFactory, Block originalBlock) {
         BlockBehaviour.Properties properties = BlockBehaviour.Properties
                 .ofFullCopy(originalBlock)
-                .strength(6.5f, 3600000.0f)
+                .strength(originalBlock.defaultDestroyTime() * 2f, 3600000.0f)
                 .isValidSpawn(Blocks::never);
 
         return register(id, props -> {

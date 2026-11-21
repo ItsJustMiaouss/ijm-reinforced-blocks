@@ -1,6 +1,16 @@
 {
   "values": [
     "ijmreinforced:reinforced_stone",
-    "ijmreinforced:reinforced_deepslate_bricks"
+    "ijmreinforced:reinforced_stone_bricks",
+    "ijmreinforced:reinforced_polished_granite",
+    "ijmreinforced:reinforced_polished_diorite",
+    "ijmreinforced:reinforced_polished_andesite",
+    "ijmreinforced:reinforced_deepslate_bricks",
+    "ijmreinforced:reinforced_polished_deepslate",
+    "ijmreinforced:reinforced_chiseled_deepslate",
+    "ijmreinforced:reinforced_deepslate_tiles",
+    "ijmreinforced:reinforced_bricks",
+    "ijmreinforced:reinforced_purpur_block",
+    "ijmreinforced:reinforced_end_stone_bricks"
   ]
 }
