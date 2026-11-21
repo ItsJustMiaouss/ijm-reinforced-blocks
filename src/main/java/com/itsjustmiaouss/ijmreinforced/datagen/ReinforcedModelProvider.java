@@ -2,11 +2,13 @@ package com.itsjustmiaouss.ijmreinforced.datagen;
 
 import com.itsjustmiaouss.ijmreinforced.IJMReinforcedBlocks;
 import com.itsjustmiaouss.ijmreinforced.block.ReinforcedBlocks;
+import com.itsjustmiaouss.ijmreinforced.item.ReinforcedItems;
 import net.fabricmc.fabric.api.client.datagen.v1.provider.FabricModelProvider;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.model.ModelTemplate;
+import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.client.data.models.model.TextureMapping;
 import net.minecraft.client.data.models.model.TextureSlot;
 import net.minecraft.resources.Identifier;
@@ -41,6 +43,6 @@ public class ReinforcedModelProvider extends FabricModelProvider {
 
     @Override
     public void generateItemModels(@NonNull ItemModelGenerators modelGen) {
-
+        modelGen.generateFlatItem(ReinforcedItems.REINFORCER_ITEM, ModelTemplates.FLAT_HANDHELD_ITEM);
     }
 }

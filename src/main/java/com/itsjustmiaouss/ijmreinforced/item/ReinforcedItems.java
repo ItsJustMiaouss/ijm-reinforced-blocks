@@ -13,7 +13,7 @@ public class ReinforcedItems {
     public static final Item REINFORCER_ITEM = register(
             ReinforcedItemIds.REINFORCER_ITEM,
             ReinforcerItem::new,
-            new Item.Properties().stacksTo(1).durability(1000)
+            new Item.Properties().stacksTo(1).durability(1000).fireResistant()
     );
 
 
