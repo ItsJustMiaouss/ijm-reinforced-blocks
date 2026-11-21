@@ -7,6 +7,10 @@ repositories {
 
 }
 
+base {
+	archivesName = project.archives_base_name
+}
+
 fabricApi {
 	configureDataGeneration {
 		client = true
