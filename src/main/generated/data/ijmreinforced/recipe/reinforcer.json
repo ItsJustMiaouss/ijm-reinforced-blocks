@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "I": "minecraft:netherite_ingot",
+    "N": "minecraft:nether_star",
+    "S": "minecraft:stick"
+  },
+  "pattern": [
+    "NI ",
+    " S ",
+    "S  "
+  ],
+  "result": {
+    "id": "ijmreinforced:reinforcer"
+  }
+}
