@@ -26,7 +26,6 @@ public class ReinforcerItem extends Item {
     @Override
     public @NonNull InteractionResult useOn(@NonNull UseOnContext context) {
         Level level = context.getLevel();
-        if (level.isClientSide()) return InteractionResult.SUCCESS;
 
         BlockPos clickedPos = context.getClickedPos();
         Block block = level.getBlockState(clickedPos).getBlock();
@@ -38,12 +37,16 @@ public class ReinforcerItem extends Item {
         Optional<AbstractReinforcedBlock> reinforcedBlock = ReinforcedBlocks.getReinforcedFromOriginal(block);
 
         if (reinforcedBlock.isEmpty()) return InteractionResult.PASS;
+        if (level.isClientSide()) return InteractionResult.SUCCESS;
+        if (!level.mayInteract(player, clickedPos)) return InteractionResult.PASS;
 
         level.setBlockAndUpdate(clickedPos, reinforcedBlock.get().defaultBlockState());
         if (level.getBlockEntity(clickedPos) instanceof ReinforcedBlockEntity reinforcedBlockEntity) {
             reinforcedBlockEntity.setOwner(player);
             itemInHand.hurtAndBreak(1, player, context.getHand());
             level.playSound(null, clickedPos, SoundEvents.NETHER_BRICKS_PLACE, SoundSource.BLOCKS, 1f, 1f);
+
+            return InteractionResult.SUCCESS;
         }
 
         return InteractionResult.PASS;
