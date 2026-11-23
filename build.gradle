@@ -1,6 +1,7 @@
 plugins {
 	id 'net.fabricmc.fabric-loom' version "${loom_version}"
 	id 'maven-publish'
+	id "me.modmuss50.mod-publish-plugin" version "2.2.1"
 }
 
 repositories {
@@ -53,5 +54,50 @@ jar {
 
 	from("LICENSE") {
 		rename { "${it}_$projectName"}
+	}
+}
+
+publishMods {
+	file = tasks.named("jar").flatMap()
+	displayName = file.map { it.asFile.name }
+	changelog = rootProject.file("CHANGELOG.md").text
+	type = STABLE
+	modLoaders.add("fabric")
+
+	modrinth {
+		projectId = "PIhPIDve"
+		accessToken = providers.environmentVariable("modrinthToken")
+
+		minecraftVersionRange {
+			start = "26.3"
+			end = "26.3"
+		}
+
+		requires("fabric-api")
+		optional("modmenu")
+	}
+
+	curseforge {
+		projectId = "1822157"
+		accessToken = providers.environmentVariable("curseforgeToken")
+
+		minecraftVersionRange {
+			start = "26.3"
+			end = "26.3"
+		}
+
+		javaVersions.add(JavaVersion.VERSION_25)
+		clientRequired = true
+		serverRequired = true
+
+		requires("fabric-api")
+		optional("modmenu")
+	}
+
+	github {
+		repository = "ItsJustMiaouss/ijm-reinforced-blocks"
+		accessToken = providers.gradleProperty("githubToken")
+		commitish = "26.3"
+		tagName = "v${project.version}"
 	}
 }
