@@ -68,7 +68,7 @@ publishMods {
 
 	modrinth {
 		projectId = "PIhPIDve"
-		accessToken = providers.environmentVariable("modrinthToken")
+		accessToken = providers.gradleProperty("modrinthToken")
 
 		minecraftVersionRange {
 			start = "26.3"
@@ -81,7 +81,7 @@ publishMods {
 
 	curseforge {
 		projectId = "1822157"
-		accessToken = providers.environmentVariable("curseforgeToken")
+		accessToken = providers.gradleProperty("curseforgeToken")
 
 		minecraftVersionRange {
 			start = "26.3"
