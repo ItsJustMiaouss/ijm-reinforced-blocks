@@ -2,4 +2,4 @@
 26.3
 
 ## Changes
-- none
+- Add missing reinforced blocks

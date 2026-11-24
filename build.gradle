@@ -1,3 +1,5 @@
+import me.modmuss50.mpp.ReleaseType
+
 plugins {
 	id 'net.fabricmc.fabric-loom' version "${loom_version}"
 	id 'maven-publish'
@@ -58,10 +60,10 @@ jar {
 }
 
 publishMods {
-	file = tasks.named("jar").flatMap()
+	file = jar.archiveFile
 	displayName = file.map { it.asFile.name }
 	changelog = rootProject.file("CHANGELOG.md").text
-	type = STABLE
+	type = ReleaseType.STABLE
 	modLoaders.add("fabric")
 
 	modrinth {
