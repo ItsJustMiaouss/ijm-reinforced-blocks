@@ -11,9 +11,13 @@ import net.minecraft.client.data.models.model.ModelTemplate;
 import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.client.data.models.model.TextureMapping;
 import net.minecraft.client.data.models.model.TextureSlot;
+import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.resources.Identifier;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import org.jspecify.annotations.NonNull;
 
+import java.util.Map;
 import java.util.Optional;
 
 public class ReinforcedModelProvider extends FabricModelProvider {
@@ -24,6 +28,12 @@ public class ReinforcedModelProvider extends FabricModelProvider {
             TextureSlot.ALL
     );
 
+    // Those blocks have the same textures on all sides, but have separate texture files
+    private static final Map<Block, Material> TEXTURE_OVERRIDES = Map.of(
+            Blocks.QUARTZ_BLOCK, TextureMapping.getBlockTexture(Blocks.QUARTZ_BLOCK, "_side"),
+            Blocks.SMOOTH_QUARTZ, TextureMapping.getBlockTexture(Blocks.QUARTZ_BLOCK, "_bottom")
+    );
+
     public ReinforcedModelProvider(FabricPackOutput output) {
         super(output);
     }
@@ -31,8 +41,10 @@ public class ReinforcedModelProvider extends FabricModelProvider {
     @Override
     public void generateBlockStateModels(@NonNull BlockModelGenerators modelGen) {
         ReinforcedBlocks.getReinforcedBlocks().forEach(block -> {
-            TextureMapping textures = new TextureMapping()
-                    .put(TextureSlot.ALL, TextureMapping.getBlockTexture(block.getOriginalBlock()));
+            Block original = block.getOriginalBlock();
+            Material material = TEXTURE_OVERRIDES.getOrDefault(original, TextureMapping.getBlockTexture(original));
+
+            TextureMapping textures = new TextureMapping().put(TextureSlot.ALL, material);
 
             Identifier model = REINFORCED_CUBE.create(block, textures, modelGen.modelOutput);
 

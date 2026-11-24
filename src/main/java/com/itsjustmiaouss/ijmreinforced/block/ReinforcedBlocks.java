@@ -1,6 +1,7 @@
 package com.itsjustmiaouss.ijmreinforced.block;
 
 import com.itsjustmiaouss.ijmreinforced.block.reinforced.ReinforcedBlock;
+import com.itsjustmiaouss.ijmreinforced.block.reinforced.ReinforcedRedstoneBlock;
 import com.itsjustmiaouss.ijmreinforced.block.reinforced.ReinforcedStone;
 import com.itsjustmiaouss.ijmreinforced.reference.ReinforcedBlockItemIds;
 import net.minecraft.core.Registry;
@@ -39,6 +40,33 @@ public class ReinforcedBlocks {
     public static final Block REINFORCED_BRICKS = registerReinforcedBlock(ReinforcedBlockItemIds.REINFORCED_BRICKS, ReinforcedBlock::new, Blocks.BRICKS);
     public static final Block REINFORCED_PURPUR_BLOCK = registerReinforcedBlock(ReinforcedBlockItemIds.REINFORCED_PURPUR_BLOCK, ReinforcedBlock::new, Blocks.PURPUR_BLOCK);
     public static final Block REINFORCED_END_STONE_BRICKS = registerReinforcedBlock(ReinforcedBlockItemIds.REINFORCED_END_STONE_BRICKS, ReinforcedBlock::new, Blocks.END_STONE_BRICKS);
+
+    public static final Block REINFORCED_OBSIDIAN = registerReinforcedBlock(ReinforcedBlockItemIds.REINFORCED_OBSIDIAN, ReinforcedBlock::new, Blocks.OBSIDIAN);
+    public static final Block REINFORCED_CRYING_OBSIDIAN = registerReinforcedBlock(ReinforcedBlockItemIds.REINFORCED_CRYING_OBSIDIAN, ReinforcedBlock::new, Blocks.CRYING_OBSIDIAN);
+
+    public static final Block REINFORCED_IRON_BLOCK = registerReinforcedBlock(ReinforcedBlockItemIds.REINFORCED_IRON_BLOCK, ReinforcedBlock::new, Blocks.IRON_BLOCK);
+    public static final Block REINFORCED_COPPER_BLOCK = registerReinforcedBlock(ReinforcedBlockItemIds.REINFORCED_COPPER_BLOCK, ReinforcedBlock::new, Blocks.COPPER_BLOCK.weathering().unaffected());
+    public static final Block REINFORCED_GOLD_BLOCK = registerReinforcedBlock(ReinforcedBlockItemIds.REINFORCED_GOLD_BLOCK, ReinforcedBlock::new, Blocks.GOLD_BLOCK);
+    public static final Block REINFORCED_REDSTONE_BLOCK = registerReinforcedBlock(ReinforcedBlockItemIds.REINFORCED_REDSTONE_BLOCK, (_, properties) -> new ReinforcedRedstoneBlock(properties), Blocks.REDSTONE_BLOCK);
+    public static final Block REINFORCED_EMERALD_BLOCK = registerReinforcedBlock(ReinforcedBlockItemIds.REINFORCED_EMERALD_BLOCK, ReinforcedBlock::new, Blocks.EMERALD_BLOCK);
+    public static final Block REINFORCED_LAPIS_BLOCK = registerReinforcedBlock(ReinforcedBlockItemIds.REINFORCED_LAPIS_BLOCK, ReinforcedBlock::new, Blocks.LAPIS_BLOCK);
+    public static final Block REINFORCED_DIAMOND_BLOCK = registerReinforcedBlock(ReinforcedBlockItemIds.REINFORCED_DIAMOND_BLOCK, ReinforcedBlock::new, Blocks.DIAMOND_BLOCK);
+    public static final Block REINFORCED_NETHERITE_BLOCK = registerReinforcedBlock(ReinforcedBlockItemIds.REINFORCED_NETHERITE_BLOCK, ReinforcedBlock::new, Blocks.NETHERITE_BLOCK);
+
+    public static final Block REINFORCED_POLISHED_TUFF = registerReinforcedBlock(ReinforcedBlockItemIds.REINFORCED_POLISHED_TUFF, ReinforcedBlock::new, Blocks.POLISHED_TUFF);
+    public static final Block REINFORCED_TUFF_BRICKS = registerReinforcedBlock(ReinforcedBlockItemIds.REINFORCED_TUFF_BRICKS, ReinforcedBlock::new, Blocks.TUFF_BRICKS);
+
+    public static final Block REINFORCED_NETHER_BRICKS = registerReinforcedBlock(ReinforcedBlockItemIds.REINFORCED_NETHER_BRICKS, ReinforcedBlock::new, Blocks.NETHER_BRICKS);
+    public static final Block REINFORCED_CHISELED_NETHER_BRICKS = registerReinforcedBlock(ReinforcedBlockItemIds.REINFORCED_CHISELED_NETHER_BRICKS, ReinforcedBlock::new, Blocks.CHISELED_NETHER_BRICKS);
+    public static final Block REINFORCED_RED_NETHER_BRICKS = registerReinforcedBlock(ReinforcedBlockItemIds.REINFORCED_RED_NETHER_BRICKS, ReinforcedBlock::new, Blocks.RED_NETHER_BRICKS);
+
+    public static final Block REINFORCED_CHISELED_POLISHED_BLACKSTONE = registerReinforcedBlock(ReinforcedBlockItemIds.REINFORCED_CHISELED_POLISHED_BLACKSTONE, ReinforcedBlock::new, Blocks.CHISELED_POLISHED_BLACKSTONE);
+    public static final Block REINFORCED_POLISHED_BLACKSTONE = registerReinforcedBlock(ReinforcedBlockItemIds.REINFORCED_POLISHED_BLACKSTONE, ReinforcedBlock::new, Blocks.POLISHED_BLACKSTONE);
+    public static final Block REINFORCED_POLISHED_BLACKSTONE_BRICKS = registerReinforcedBlock(ReinforcedBlockItemIds.REINFORCED_POLISHED_BLACKSTONE_BRICKS, ReinforcedBlock::new, Blocks.POLISHED_BLACKSTONE_BRICKS);
+
+    public static final Block REINFORCED_QUARTZ_BLOCK = registerReinforcedBlock(ReinforcedBlockItemIds.REINFORCED_QUARTZ_BLOCK, ReinforcedBlock::new, Blocks.QUARTZ_BLOCK);
+    public static final Block REINFORCED_QUARTZ_BRICKS = registerReinforcedBlock(ReinforcedBlockItemIds.REINFORCED_QUARTZ_BRICKS, ReinforcedBlock::new, Blocks.QUARTZ_BRICKS);
+    public static final Block REINFORCED_SMOOTH_QUARTZ = registerReinforcedBlock(ReinforcedBlockItemIds.REINFORCED_SMOOTH_QUARTZ, ReinforcedBlock::new, Blocks.SMOOTH_QUARTZ);
 
     /**
      * Get a Collection of the registered reinforced blocks.
